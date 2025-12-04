@@ -3,49 +3,49 @@ import logo from "../assets/images/logo-kampus.png"; // Pastikan path asset bena
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-6">
-      {/* 1. LOGO (Pojok Kiri) */}
-      <div className="w-16 md:w-20">
+    <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-5 font-sans">
+      {/* 1. LOGO */}
+      <div className="w-16 md:w-20 relative z-10">
+        {" "}
+        {/* Added z-10 to ensure it's above any overlay */}
         <img
           src={logo}
           alt="Logo Kampus"
-          className="w-full h-auto drop-shadow-md"
+          className="w-full h-auto drop-shadow-lg"
         />
       </div>
 
-      {/* 2. MENU PIL PINK (Tengah) */}
-      {/* Absolute center trick agar benar-benar di tengah layar */}
-      <div className="absolute left-1/2 transform -translate-x-1/2">
-        <div className="bg-[#F8D7F6] px-8 py-3 rounded-full shadow-lg flex items-center space-x-8">
-          {/* Menu Items (Warna biru gelap sesuai gambar) */}
+      {/* 2. MENU PIL PINK (TENGAH) */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+        {/* Fine-tuning padding: px-7 py-2.5 */}
+        <div className="bg-[#F8D7F6] px-7 py-2.5 rounded-full shadow-2xl flex items-center space-x-6 border-2 border-white/20">
           <a
             href="#"
-            className="font-bold text-blue-900 bg-blue-900 text-white px-6 py-1 rounded-full"
+            className="font-bold text-sm text-blue-900 bg-blue-900 text-white px-5 py-2 rounded-full shadow-sm tracking-wide"
           >
             Profil
           </a>
           <a
             href="#"
-            className="font-medium text-blue-900 hover:text-blue-700 transition"
+            className="font-bold text-sm text-blue-900 hover:text-blue-700 transition tracking-wide"
           >
             Labs
           </a>
           <a
             href="#"
-            className="font-medium text-blue-900 hover:text-blue-700 transition"
+            className="font-bold text-sm text-blue-900 hover:text-blue-700 transition tracking-wide"
           >
             Academics
           </a>
           <a
             href="#"
-            className="font-medium text-blue-900 hover:text-blue-700 transition"
+            className="font-bold text-sm text-blue-900 hover:text-blue-700 transition tracking-wide"
           >
             Lecturers
           </a>
         </div>
       </div>
 
-      {/* Kosong di kanan agar seimbang (opsional) */}
       <div className="w-20"></div>
     </nav>
   );

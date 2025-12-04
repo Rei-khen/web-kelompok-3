@@ -10,42 +10,39 @@ import videoBg from "../assets/images/bg-video.mp4";
 const Hero = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden font-sans bg-black">
-      {/* 1. BACKGROUND VIDEO */}
+      {/* 1. BACKGROUND VIDEO & OVERLAY */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover opacity-50"
         >
           <source src={videoBg} type="video/mp4" />
         </video>
-        {/* Overlay gelap agar teks terbaca */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-black via-black/80 to-transparent z-10"></div>
       </div>
 
-      {/* 2. LAYOUT UTAMA (Flexbox) */}
-      <div className="relative z-10 w-full h-full flex flex-row">
+      {/* 2. LAYOUT UTAMA */}
+      <div className="relative z-20 w-full h-full flex flex-row justify-between">
         {/* --- KOLOM KIRI (KONTEN) --- */}
-        {/* Padding-top besar karena ada Navbar di atas */}
-        <div className="w-1/2 h-full flex flex-col justify-center pl-16 pr-8 pt-20">
-          {/* Gambar Tulisan: INOVASI TANPA BATAS */}
+        <div className="w-1/2 h-full flex flex-col justify-center items-start pl-16 pr-8 pt-24">
           <motion.img
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
             src={imgInovasi}
             alt="Inovasi Tanpa Batas"
-            className="w-[80%] max-w-lg mb-6 object-contain"
+            className="max-w-xl mb-4 object-contain drop-shadow-xl"
           />
 
-          {/* Paragraf Teks */}
           <motion.p
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-gray-200 text-lg leading-relaxed max-w-xl text-justify"
+            className="text-gray-200 text-lg leading-relaxed max-w-lg text-left drop-shadow-md font-medium"
           >
             Di sini, ide-ide besar bertemu dengan teknologi canggih. Kami
             mempersiapkan Anda menjadi talenta digital yang tidak hanya siap
@@ -55,36 +52,40 @@ const Hero = () => {
         </div>
 
         {/* --- KOLOM KANAN (PANEL BIRU) --- */}
-        <div className="w-1/2 h-full flex flex-col justify-end items-end">
+        {/* PERBAIKAN: 
+            1. 'justify-center': Agar kotak biru berada di TENGAH vertikal.
+            2. Saya ubah w-[20%] jadi w-[30%] agar tulisan informatics muat (tidak gepeng).
+        */}
+        <div className="w-[20%] h-full flex flex-col justify-center items-end pb-0">
           {/* Panel Biru Besar */}
-          {/* 'h-[85%]' agar tidak mentok sampai atas navbar */}
-          {/* 'rounded-tl-[100px]' adalah kunci lengkungan kiri atas */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: "circOut" }}
-            className="relative w-[90%] h-[85%] bg-[#000080] rounded-tl-[100px] flex items-center justify-center shadow-2xl overflow-hidden"
+            // Tinggi di-set 50% agar tidak terlalu kecil, rounded kiri disesuaikan
+            className="relative w-full h-[60%] bg-[#00008B] rounded-l-[60px] flex items-center justify-center shadow-2xl overflow-hidden border-l-[4px] border-blue-500/20"
           >
             {/* Container Gambar Vertikal */}
             <div className="relative w-full h-full flex items-center justify-center">
-              {/* Gambar INFORMATICS (Stroke/Garis) - Di Belakang/Geser sedikit */}
+              {/* Gambar INFORMATICS (Stroke) */}
+              {/* h-[90%] agar memenuhi kotak yang sekarang lebih pendek */}
               <motion.img
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 0.8 }}
                 src={imgInfoStroke}
                 alt="Informatics Stroke"
-                className="absolute h-[80%] object-contain translate-x-4 opacity-50"
+                className="absolute h-[80%] object-contain translate-x-10 opacity-50 scale-105"
               />
 
-              {/* Gambar INFORMATICS (Putih Solid) - Di Depan */}
+              {/* Gambar INFORMATICS (Putih Solid) */}
               <motion.img
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 1, delay: 1 }}
                 src={imgInfoWhite}
                 alt="Informatics White"
-                className="absolute h-[80%] object-contain -translate-x-4 z-10"
+                className="absolute h-[80%] object-contain -translate-x-10 z-10 drop-shadow-2xl scale-105"
               />
             </div>
           </motion.div>
