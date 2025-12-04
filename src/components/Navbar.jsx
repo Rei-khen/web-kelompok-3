@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-5 font-sans">
       {/* 1. LOGO */}
-      <div className="w-16 md:w-20 relative z-10">
+      <div className="w-16 md:w-16 relative z-10">
         {" "}
         {/* Added z-10 to ensure it's above any overlay */}
         <img

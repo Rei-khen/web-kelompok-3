@@ -52,40 +52,34 @@ const Hero = () => {
         </div>
 
         {/* --- KOLOM KANAN (PANEL BIRU) --- */}
-        {/* PERBAIKAN: 
-            1. 'justify-center': Agar kotak biru berada di TENGAH vertikal.
-            2. Saya ubah w-[20%] jadi w-[30%] agar tulisan informatics muat (tidak gepeng).
-        */}
         <div className="w-[20%] h-full flex flex-col justify-center items-end pb-0">
           {/* Panel Biru Besar */}
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: "circOut" }}
-            // Tinggi di-set 50% agar tidak terlalu kecil, rounded kiri disesuaikan
-            className="relative w-full h-[60%] bg-[#00008B] rounded-l-[60px] flex items-center justify-center shadow-2xl overflow-hidden border-l-[4px] border-blue-500/20"
+            className="relative w-full h-[70%] bg-[#00008B] rounded-l-[60px] flex items-center justify-center shadow-2xl overflow-hidden border-l-[4px] border-blue-500/20"
           >
             {/* Container Gambar Vertikal */}
             <div className="relative w-full h-full flex items-center justify-center">
-              {/* Gambar INFORMATICS (Stroke) */}
-              {/* h-[90%] agar memenuhi kotak yang sekarang lebih pendek */}
+              {/* Gambar INFORMATICS (Stroke) - Belakang & Lebih Bawah */}
               <motion.img
-                initial={{ y: 100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.8 }}
+                initial={{ y: 150, opacity: 0 }} // Mulai dari bawah sekali
+                animate={{ y: 40, opacity: 1 }} // PERBAIKAN: Berhenti di y:40 (agak bawah)
+                transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
                 src={imgInfoStroke}
                 alt="Informatics Stroke"
-                className="absolute h-[80%] object-contain translate-x-10 opacity-50 scale-105"
+                className="absolute h-[90%] object-contain translate-x-10 opacity-50 scale-105"
               />
 
-              {/* Gambar INFORMATICS (Putih Solid) */}
+              {/* Gambar INFORMATICS (Putih Solid) - Depan & Lebih Atas */}
               <motion.img
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 1 }}
+                initial={{ y: -150, opacity: 0 }} // Mulai dari atas sekali
+                animate={{ y: -40, opacity: 1 }} // PERBAIKAN: Berhenti di y:-40 (agak atas)
+                transition={{ duration: 1.2, delay: 1, ease: "easeOut" }}
                 src={imgInfoWhite}
                 alt="Informatics White"
-                className="absolute h-[80%] object-contain -translate-x-10 z-10 drop-shadow-2xl scale-105"
+                className="absolute h-[90%] object-contain -translate-x-10 z-10 drop-shadow-2xl scale-105"
               />
             </div>
           </motion.div>
