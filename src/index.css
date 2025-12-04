@@ -1,1 +1,14 @@
+/* src/index.css */
+
+/* Ini sintaks baru untuk memanggil seluruh Tailwind v4 */
 @import "tailwindcss";
+
+/* Di v4, kamu tidak wajib pakai @layer utilities, 
+  tapi tetap disarankan agar Tailwind membacanya sebagai utility class 
+*/
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+    color: transparent;
+  }
+}
