@@ -1,6 +1,6 @@
 // src/sections/Labs.jsx
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 // --- IMPORT ASET GAMBAR ---
 import bg1 from "../assets/images/lab-bg-1-test.png";
@@ -60,30 +60,47 @@ const labs = [
 ];
 
 const Labs = () => {
-  // PERUBAHAN 1: Set initial state ke NULL (semua tertutup)
   const [activeLab, setActiveLab] = useState(null);
+  const containerRef = useRef(null);
+
+  // amount: 0.3 artinya animasi baru jalan setelah 30% area kartu terlihat (biar tidak kepotong)
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
   return (
-    // PERUBAHAN 2: Tambah 'pt-20' agar turun sedikit dari navbar
     <section className="h-screen w-full bg-black flex items-center justify-center px-4 md:px-10 pt-20 overflow-hidden">
-      {/* PERUBAHAN 3: Tinggi dikurangi jadi h-[60%] agar lebih pendek */}
-      <div className="w-full h-[85%] flex flex-row gap-4 max-w-7xl">
-        {labs.map((lab) => (
+      <div
+        ref={containerRef}
+        className="w-full h-[85%] flex flex-row gap-4 max-w-7xl"
+      >
+        {labs.map((lab, index) => (
           <motion.div
             key={lab.id}
             layout
-            // Jika diklik: kalau dia sedang aktif, tutup (null). Kalau belum aktif, buka (lab.id)
             onClick={() => setActiveLab(activeLab === lab.id ? null : lab.id)}
-            // ANIMASI FLEX:
-            // Jika aktif: flex 3.5 (lebar)
-            // Jika null (semua tutup): flex 1 (rata semua)
-            // Jika ada yang aktif tapi bukan saya: flex 0.5 (menyempit sedikit biar fokus ke yang aktif)
+            // LOGIC ANIMASI
             animate={{
               flex: activeLab === lab.id ? 3.5 : activeLab === null ? 1 : 0.5,
+              opacity: isInView ? 1 : 0,
+              y: isInView ? 0 : 100, // Jarak muncul dari bawah lebih jauh (100px) biar dramatis
+              scale: isInView ? 1 : 0.9, // Scale awal sedikit lebih besar (0.9) biar smooth
             }}
+            // LOGIC TRANSISI (Disini kuncinya)
             transition={{
-              duration: 0.7,
-              ease: [0.25, 1, 0.5, 1],
+              // --- Animasi Masuk (Entrance) ---
+              // Delay dikali 0.2 (sebelumnya 0.1) agar jeda antar kartu lebih terasa
+              delay: index * 0.2,
+
+              duration: 1.0, // Gerakan memakan waktu 1 detik (sangat smooth)
+              type: "spring",
+              stiffness: 50, // Pegasnya "lemas" (sebelumnya 100), jadi tidak menyentak
+              damping: 20, // Pengereman halus
+
+              // --- Override Khusus saat Klik (Biar tetap responsif) ---
+              flex: {
+                delay: 0, // Saat diklik langsung jalan (tanpa delay)
+                duration: 0.8,
+                ease: "circOut", // Easing curve yang enak buat resize
+              },
             }}
             className={`relative h-full rounded-[30px] overflow-hidden cursor-pointer shadow-2xl border border-white/10 group ${
               activeLab === lab.id ? "" : "hover:brightness-110"
@@ -93,12 +110,12 @@ const Labs = () => {
             <img
               src={lab.bg}
               alt="Lab Background"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
 
             {/* Overlay */}
             <div
-              className={`absolute inset-0 transition-colors duration-500 ${
+              className={`absolute inset-0 transition-colors duration-700 ${
                 activeLab === lab.id
                   ? "bg-black/40"
                   : "bg-black/30 group-hover:bg-black/10"
@@ -106,13 +123,12 @@ const Labs = () => {
             />
 
             {/* KONTEN TERTUTUP (VERTICAL) */}
-            {/* Muncul jika saya TIDAK aktif */}
             {activeLab !== lab.id && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.5 }}
                 className="absolute inset-0 flex items-center justify-center p-2"
               >
                 <img
@@ -124,12 +140,11 @@ const Labs = () => {
             )}
 
             {/* KONTEN TERBUKA (HORIZONTAL) */}
-            {/* Muncul jika saya SEDANG aktif */}
             {activeLab === lab.id && (
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
                 className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col items-start"
               >
                 <img
