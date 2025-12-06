@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 
 // Import Gambar (Pastikan nama file sesuai Langkah 1)
-import imgInovasi from "../assets/images/text-inovasi.png";
+import imgInovasi from "../assets/images/text-inovasi-baru.png";
 import imgInfoWhite from "../assets/images/text-informatics-white.png";
 import imgInfoStroke from "../assets/images/text-informatics-stroke.png";
 import videoBg from "../assets/images/bg-video.mp4";
