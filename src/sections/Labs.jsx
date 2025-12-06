@@ -63,8 +63,9 @@ const Labs = () => {
   const [activeLab, setActiveLab] = useState(null);
   const containerRef = useRef(null);
 
-  // amount: 0.3 artinya animasi baru jalan setelah 30% area kartu terlihat (biar tidak kepotong)
-  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+  // PERUBAHAN DISINI: 'once: true' DIHAPUS.
+  // Sekarang animasi akan jalan setiap kali container masuk viewport (amount: 0.3)
+  const isInView = useInView(containerRef, { amount: 0.3 });
 
   return (
     <section className="h-screen w-full bg-black flex items-center justify-center px-4 md:px-10 pt-20 overflow-hidden">
@@ -79,27 +80,31 @@ const Labs = () => {
             onClick={() => setActiveLab(activeLab === lab.id ? null : lab.id)}
             // LOGIC ANIMASI
             animate={{
+              // Flex logic (Melebar/Menyempit)
               flex: activeLab === lab.id ? 3.5 : activeLab === null ? 1 : 0.5,
+
+              // Entrance Logic (Muncul/Hilang saat scroll)
+              // Saat tidak terlihat (!isInView), dia akan sembunyi (opacity 0, y 100)
+              // Saat terlihat (isInView), dia akan muncul
               opacity: isInView ? 1 : 0,
-              y: isInView ? 0 : 100, // Jarak muncul dari bawah lebih jauh (100px) biar dramatis
-              scale: isInView ? 1 : 0.9, // Scale awal sedikit lebih besar (0.9) biar smooth
+              y: isInView ? 0 : 100,
+              scale: isInView ? 1 : 0.9,
             }}
-            // LOGIC TRANSISI (Disini kuncinya)
             transition={{
-              // --- Animasi Masuk (Entrance) ---
-              // Delay dikali 0.2 (sebelumnya 0.1) agar jeda antar kartu lebih terasa
+              // Delay berurutan (Stagger)
               delay: index * 0.2,
 
-              duration: 1.0, // Gerakan memakan waktu 1 detik (sangat smooth)
+              // Smooth physics
+              duration: 1.0,
               type: "spring",
-              stiffness: 50, // Pegasnya "lemas" (sebelumnya 100), jadi tidak menyentak
-              damping: 20, // Pengereman halus
+              stiffness: 50,
+              damping: 20,
 
-              // --- Override Khusus saat Klik (Biar tetap responsif) ---
+              // Override khusus agar saat diklik card langsung responsif (tanpa delay)
               flex: {
-                delay: 0, // Saat diklik langsung jalan (tanpa delay)
+                delay: 0,
                 duration: 0.8,
-                ease: "circOut", // Easing curve yang enak buat resize
+                ease: "circOut",
               },
             }}
             className={`relative h-full rounded-[30px] overflow-hidden cursor-pointer shadow-2xl border border-white/10 group ${
