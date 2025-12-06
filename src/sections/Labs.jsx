@@ -65,10 +65,10 @@ const Labs = () => {
   const isInView = useInView(containerRef, { amount: 0.3 });
 
   return (
-    <section className="h-screen w-full bg-black flex items-center justify-center px-4 md:px-10 pt-20 overflow-hidden">
+    <section className="min-h-screen w-full bg-gradient-to-b from-[#0a192f] to-black flex items-center justify-center px-4 md:px-10 pt-20 overflow-hidden">
       <div
         ref={containerRef}
-        className="w-full h-[88%] flex flex-row gap-4 max-w-7xl"
+        className="w-full h-[60vh] md:h-[80vh] flex flex-row gap-4 max-w-7xl"
       >
         {labs.map((lab, index) => (
           <motion.div
@@ -76,24 +76,24 @@ const Labs = () => {
             layout
             onClick={() => setActiveLab(activeLab === lab.id ? null : lab.id)}
             animate={{
-              flex: activeLab === lab.id ? 3.5 : activeLab === null ? 1 : 0.5,
+              flex: activeLab === lab.id ? 10 : activeLab === null ? 2 : 1,
               opacity: isInView ? 1 : 0,
               y: isInView ? 0 : 100,
               scale: isInView ? 1 : 0.9,
             }}
             transition={{
-              delay: index * 0.2,
-              duration: 1.0,
+              delay: index * 0.1,
+              duration: 0.8,
               type: "spring",
-              stiffness: 50,
-              damping: 20,
+              stiffness: 40,
+              damping: 15,
               flex: {
                 delay: 0,
-                duration: 0.8,
-                ease: "circOut",
+                duration: 0.6,
+                ease: "easeInOut",
               },
             }}
-            className={`relative h-full rounded-[15px] overflow-hidden cursor-pointer shadow-2xl border border-white/10 group ${
+            className={`relative h-full rounded-[20px] md:rounded-[10px] overflow-hidden cursor-pointer shadow-2xl border border-white/5 group ${
               activeLab === lab.id ? "" : "hover:brightness-110"
             }`}
           >
@@ -101,14 +101,14 @@ const Labs = () => {
             <img
               src={lab.bg}
               alt="Lab Background"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
 
             {/* Overlay */}
             <div
               className={`absolute inset-0 transition-colors duration-700 ${
                 activeLab === lab.id
-                  ? "bg-black/40"
+                  ? "bg-black/50"
                   : "bg-black/30 group-hover:bg-black/10"
               }`}
             />
@@ -119,17 +119,17 @@ const Labs = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
                 // PERUBAHAN DISINI:
-                // items-end = Rata Bawah
-                // justify-end = Rata Kanan
-                // pb-8 pr-6 = Padding (jarak) biar ga nempel banget sama pojokan
+                // justify-center -> justify-end (Rata Kanan)
+                // pb-8 -> pb-8 (Tetap jarak bawah)
+                // pr-6 (TAMBAHAN) -> Jarak dari kanan
                 className="absolute inset-0 flex items-end justify-end pb-8 pr-6"
               >
                 <img
                   src={lab.titleVertical}
                   alt="Title Vertical"
-                  className="h-[60%] w-auto object-contain pointer-events-none drop-shadow-md"
+                  className="max-h-[70%] w-auto object-contain pointer-events-none drop-shadow-md min-w-[40px]"
                 />
               </motion.div>
             )}
@@ -139,16 +139,16 @@ const Labs = () => {
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-black via-black/80 to-transparent flex flex-col items-start"
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="absolute bottom-0 left-0 w-full p-6 md:p-10 bg-gradient-to-t from-black via-black/90 to-transparent flex flex-col items-start"
               >
                 <img
                   src={lab.titleHorizontal}
                   alt="Title Horizontal"
-                  className="h-12 md:h-16 w-auto object-contain mb-3 drop-shadow-lg"
+                  className="h-10 md:h-20 w-auto object-contain mb-4 drop-shadow-lg"
                 />
 
-                <p className="text-gray-200 text-xs md:text-base leading-relaxed max-w-lg font-medium drop-shadow-md">
+                <p className="text-gray-200 text-sm md:text-lg leading-relaxed max-w-2xl font-medium drop-shadow-md">
                   {lab.desc}
                 </p>
               </motion.div>

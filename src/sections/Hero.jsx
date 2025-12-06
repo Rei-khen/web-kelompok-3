@@ -2,17 +2,15 @@
 import { motion } from "framer-motion";
 
 // --- IMPORT ASET GAMBAR ---
-import awanBg from "../assets/images/awan-bg.jpeg"; // Pastikan ekstensi file benar (.jpg/.jpeg)
+import awanBg from "../assets/images/awan-bg.jpeg";
 import gedungPng from "../assets/images/gedung-transparan.png";
 
 const Hero = () => {
-  // Definisi Transisi (Kita pakai satu variabel biar semua layer sinkron)
   const animTransition = {
     duration: 1.8,
     ease: [0.25, 0.1, 0.25, 1],
   };
 
-  // Definisi Gerakan Teks (Biar Solid & Stroke geraknya sama persis)
   const textVariants = {
     hidden: { y: -150, opacity: 0 },
     visible: {
@@ -24,9 +22,7 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden font-sans bg-[#0a192f]">
-      {/* ========================================================= */}
-      {/* LAYER 1: LANGIT (Paling Belakang / z-0)                   */}
-      {/* ========================================================= */}
+      {/* LAYER 1: LANGIT */}
       <motion.div
         initial={{ scale: 1.8 }}
         animate={{ scale: 1 }}
@@ -37,10 +33,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-blue-900/20 mix-blend-multiply"></div>
       </motion.div>
 
-      {/* ========================================================= */}
-      {/* LAYER 2: TEKS SOLID (Di Belakang Gedung / z-10)           */}
-      {/* ========================================================= */}
-      {/* Teks ini akan terlihat di langit, tapi TERTUTUP oleh gedung */}
+      {/* LAYER 2: TEKS SOLID */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-start pt-40 md:pt-56 px-4">
         <motion.h1
           variants={textVariants}
@@ -54,10 +47,7 @@ const Hero = () => {
         </motion.h1>
       </div>
 
-      {/* ========================================================= */}
-      {/* LAYER 3: GEDUNG PNG (Di Depan Teks Solid / z-20)          */}
-      {/* ========================================================= */}
-      {/* Gedung ini akan menutupi teks solid di Layer 2 */}
+      {/* LAYER 3: GEDUNG PNG */}
       <motion.div
         initial={{ y: "100%" }}
         animate={{ y: 0 }}
@@ -71,20 +61,16 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* ========================================================= */}
-      {/* LAYER 4: TEKS STROKE (Paling Depan / z-30)                */}
-      {/* ========================================================= */}
-      {/* Teks ini hanya garis pinggir, berada DI ATAS gedung */}
-      {/* Posisi & Padding HARUS SAMA PERSIS dengan Layer 2 biar nempel pas */}
+      {/* LAYER 4: TEKS STROKE */}
       <div className="absolute inset-0 z-30 flex flex-col items-center justify-start pt-40 md:pt-56 px-4 pointer-events-none">
         <motion.h1
-          variants={textVariants} // Gunakan varian animasi yg sama
+          variants={textVariants}
           initial="hidden"
           animate="visible"
           className="text-6xl md:text-8xl font-black tracking-tighter leading-none text-center uppercase"
           style={{
-            WebkitTextStroke: "2px rgba(255, 255, 255, 0.8)", // Garis Putih
-            color: "transparent", // Isinya transparan
+            WebkitTextStroke: "2px rgba(255, 255, 255, 0.8)",
+            color: "transparent",
           }}
         >
           TEKNIK
@@ -92,6 +78,16 @@ const Hero = () => {
           INFORMATIKA
         </motion.h1>
       </div>
+
+      {/* ========================================================= */}
+      {/* PENAMBAHAN BARU: GRADIENT MASK (FOG) DI BAWAH             */}
+      {/* ========================================================= */}
+      {/* 1. h-64: Tinggi gradasi cukup besar biar smooth
+          2. from-[#0a192f]: Warna bawah sama dengan background Labs (Menyatu)
+          3. to-transparent: Warna atas transparan (biar gedung atas kelihatan)
+          4. z-40: Paling depan (menutupi kaki gedung)
+      */}
+      <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-[#0a192f] via-[#0a192f]/90 to-transparent z-40 pointer-events-none"></div>
     </section>
   );
 };

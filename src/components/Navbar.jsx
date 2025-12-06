@@ -35,13 +35,13 @@ const Navbar = () => {
             href="#"
             className="font-bold text-sm text-blue-900 hover:text-blue-700 transition tracking-wide"
           >
-            Academics
+            Lecturers
           </a>
           <a
             href="#"
             className="font-bold text-sm text-blue-900 hover:text-blue-700 transition tracking-wide"
           >
-            Lecturers
+            Academics
           </a>
         </div>
       </div>
