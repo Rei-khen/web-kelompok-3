@@ -4,10 +4,10 @@ import { motion, useInView } from "framer-motion";
 
 // --- IMPORT ASET GAMBAR ---
 import bg1 from "../assets/images/lab-bg-1-test.png";
-import bg2 from "../assets/images/lab-bg-2-test.png";
-import bg3 from "../assets/images/lab-bg-3-test.png";
-import bg4 from "../assets/images/lab-bg-4-test.png";
-import bg5 from "../assets/images/lab-bg-5-test.png";
+import bg2 from "../assets/images/lab-bg-2.png";
+import bg3 from "../assets/images/lab-bg-3.png";
+import bg4 from "../assets/images/lab-bg-4.jpeg";
+import bg5 from "../assets/images/lab-bg-5.png";
 
 import titleVert1 from "../assets/images/text-cloud-vert.png";
 import titleVert2 from "../assets/images/text-iot-vert.png";
@@ -62,52 +62,38 @@ const labs = [
 const Labs = () => {
   const [activeLab, setActiveLab] = useState(null);
   const containerRef = useRef(null);
-
-  // PERUBAHAN DISINI: 'once: true' DIHAPUS.
-  // Sekarang animasi akan jalan setiap kali container masuk viewport (amount: 0.3)
   const isInView = useInView(containerRef, { amount: 0.3 });
 
   return (
     <section className="h-screen w-full bg-black flex items-center justify-center px-4 md:px-10 pt-20 overflow-hidden">
       <div
         ref={containerRef}
-        className="w-full h-[85%] flex flex-row gap-4 max-w-7xl"
+        className="w-full h-[88%] flex flex-row gap-4 max-w-7xl"
       >
         {labs.map((lab, index) => (
           <motion.div
             key={lab.id}
             layout
             onClick={() => setActiveLab(activeLab === lab.id ? null : lab.id)}
-            // LOGIC ANIMASI
             animate={{
-              // Flex logic (Melebar/Menyempit)
               flex: activeLab === lab.id ? 3.5 : activeLab === null ? 1 : 0.5,
-
-              // Entrance Logic (Muncul/Hilang saat scroll)
-              // Saat tidak terlihat (!isInView), dia akan sembunyi (opacity 0, y 100)
-              // Saat terlihat (isInView), dia akan muncul
               opacity: isInView ? 1 : 0,
               y: isInView ? 0 : 100,
               scale: isInView ? 1 : 0.9,
             }}
             transition={{
-              // Delay berurutan (Stagger)
               delay: index * 0.2,
-
-              // Smooth physics
               duration: 1.0,
               type: "spring",
               stiffness: 50,
               damping: 20,
-
-              // Override khusus agar saat diklik card langsung responsif (tanpa delay)
               flex: {
                 delay: 0,
                 duration: 0.8,
                 ease: "circOut",
               },
             }}
-            className={`relative h-full rounded-[30px] overflow-hidden cursor-pointer shadow-2xl border border-white/10 group ${
+            className={`relative h-full rounded-[15px] overflow-hidden cursor-pointer shadow-2xl border border-white/10 group ${
               activeLab === lab.id ? "" : "hover:brightness-110"
             }`}
           >
@@ -134,7 +120,11 @@ const Labs = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 flex items-center justify-center p-2"
+                // PERUBAHAN DISINI:
+                // items-end = Rata Bawah
+                // justify-end = Rata Kanan
+                // pb-8 pr-6 = Padding (jarak) biar ga nempel banget sama pojokan
+                className="absolute inset-0 flex items-end justify-end pb-8 pr-6"
               >
                 <img
                   src={lab.titleVertical}
