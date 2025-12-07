@@ -2,6 +2,9 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
+// --- IMPORT KOMPONEN PARTICLES ---
+import Particles from "../components/Particles"; // Sesuaikan path jika beda folder
+
 // --- GAMBAR PLACEHOLDER ---
 import lecturerImg from "../assets/images/lab-bg-1.png";
 
@@ -29,14 +32,14 @@ const Lecturers = () => {
     setActiveId(clampedIndex);
   });
 
-  // --- KONFIGURASI ANIMASI MENGAMBANG (VERSI TENANG/CALM) ---
+  // --- ANIMASI MENGAMBANG ---
   const floatingVariants = {
     animate: {
-      rotateX: [0, 2, 0], // PERUBAHAN: Sudut sangat kecil (hanya 2 derajat)
-      rotateY: [-1, 1, -1], // PERUBAHAN: Hampir tidak terasa miringnya
-      y: [-8, 8, -8], // PERUBAHAN: Jarak naik-turun diperpendek
+      rotateX: [0, 2, 0],
+      rotateY: [-1, 1, -1],
+      y: [-8, 8, -8],
       transition: {
-        duration: 10, // PERUBAHAN: Diperlambat jadi 10 detik (Sangat smooth)
+        duration: 10,
         repeat: Infinity,
         repeatType: "mirror",
         ease: "easeInOut",
@@ -48,11 +51,26 @@ const Lecturers = () => {
     <section ref={sectionRef} className="relative h-[500vh] bg-black">
       {/* STICKY VIEWPORT + PERSPECTIVE 3D */}
       <div className="sticky top-0 h-screen w-full bg-gradient-to-b from-black to-[#0a192f] flex flex-col justify-center items-center overflow-hidden perspective-[2000px]">
-        {/* --- WRAPPER ANIMASI MENGAMBANG --- */}
+        {/* --- 1. LAYER PARTIKEL (BACKGROUND) --- */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <Particles
+            particleColors={["#ffffff", "#ffffff", "#a5b4fc"]} // Putih & Biru Muda
+            particleCount={150}
+            particleSpread={10}
+            speed={0.3}
+            particleBaseSize={80} // Ukuran partikel
+            moveParticlesOnHover={true} // False biar tidak mengganggu interaksi kartu
+            alphaParticles={false}
+            disableRotation={false}
+          />
+        </div>
+
+        {/* --- 2. LAYER KONTEN KARTU (FOREGROUND) --- */}
+        {/* Tambahkan z-10 agar berada DI ATAS partikel */}
         <motion.div
           variants={floatingVariants}
           animate="animate"
-          className="w-full flex justify-center items-center"
+          className="w-full flex justify-center items-center z-1"
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* CONTAINER KARTU */}
@@ -131,8 +149,7 @@ const Lecturers = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>{" "}
-        {/* End of Floating Wrapper */}
+        </motion.div>
       </div>
     </section>
   );

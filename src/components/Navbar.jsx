@@ -43,6 +43,12 @@ const Navbar = () => {
           >
             Academics
           </a>
+          <a
+            href="#"
+            className="font-bold text-sm text-blue-900 hover:text-blue-700 transition tracking-wide"
+          >
+            Documentation
+          </a>
         </div>
       </div>
 
