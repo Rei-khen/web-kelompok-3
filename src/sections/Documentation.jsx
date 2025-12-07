@@ -4,8 +4,12 @@ import DocumentationMarquee from "../components/DocumentationMarquee";
 
 // --- GAMBAR PLACEHOLDER ---
 import docImg1 from "../assets/images/lab-bg-1.png";
+import gambar1 from "../assets/images/dokumentasi/dokumentasi1.png";
+import gambar2 from "../assets/images/dokumentasi/dokumentasi2.png";
+import gambar3 from "../assets/images/dokumentasi/dokumentasi3.png";
+import gambar4 from "../assets/images/dokumentasi/dokumentasi4.png";
 
-const row1Images = [docImg1, docImg1, docImg1, docImg1, docImg1];
+const row1Images = [gambar1, gambar2, gambar3, gambar4, gambar4];
 const row2Images = [docImg1, docImg1, docImg1, docImg1, docImg1].reverse();
 
 const Documentation = () => {
