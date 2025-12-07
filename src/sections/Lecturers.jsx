@@ -22,7 +22,7 @@ import pakZahir from "../assets/images/gambarDosen/pas_zahir.png";
 import pakKiki from "../assets/images/gambarDosen/pak_kiki.jpeg";
 import pakAdy from "../assets/images/gambarDosen/pak_ady.png";
 import ibuEnab from "../assets/images/gambarDosen/ibu_enab.jpeg";
-import broKris from "../assets/images/gambarDosen/bro_kris.png";
+import broKris from "../assets/images/gambarDosen/pak_kris.png";
 import ibuElly from "../assets/images/gambarDosen/ibu_elly.png";
 import pak_ais from "../assets/images/gambarDosen/pak_ais.jpg";
 import ibuEmma from "../assets/images/gambarDosen/ibu_emma.png";

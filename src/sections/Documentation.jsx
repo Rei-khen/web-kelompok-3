@@ -8,9 +8,39 @@ import gambar1 from "../assets/images/dokumentasi/dokumentasi1.png";
 import gambar2 from "../assets/images/dokumentasi/dokumentasi2.png";
 import gambar3 from "../assets/images/dokumentasi/dokumentasi3.png";
 import gambar4 from "../assets/images/dokumentasi/dokumentasi4.png";
+import gambar5 from "../assets/images/dokumentasi/dokumentasi5.jpg";
+import gambar6 from "../assets/images/dokumentasi/dokumentasi6.jpg";
+import gambar7 from "../assets/images/dokumentasi/dokumentasi7.jpg";
+import gambar8 from "../assets/images/dokumentasi/dokumentasi8.jpg";
 
-const row1Images = [gambar1, gambar2, gambar3, gambar4, gambar4];
-const row2Images = [docImg1, docImg1, docImg1, docImg1, docImg1].reverse();
+//gambar dibawah
+import gambarBawah1 from "../assets/images/dokumentasi/gambar-bawah-1.png";
+import gambarBawah2 from "../assets/images/dokumentasi/gambar-bawah-2.png";
+import gambarBawah3 from "../assets/images/dokumentasi/gambar-bawah-3.png";
+import gambarBawah4 from "../assets/images/dokumentasi/gambar-bawah-4.png";
+import gambarBawah5 from "../assets/images/dokumentasi/gambar-bawah-5.png";
+import gambarBawah6 from "../assets/images/dokumentasi/gambar-bawah-6.png";
+import gambarBawah7 from "../assets/images/dokumentasi/gambar-bawah-7.png";
+
+const row1Images = [
+  gambar1,
+  gambar2,
+  gambar3,
+  gambar4,
+  gambar5,
+  gambar6,
+  gambar7,
+  gambar8,
+];
+const row2Images = [
+  gambarBawah1,
+  gambarBawah2,
+  gambarBawah3,
+  gambarBawah4,
+  gambarBawah5,
+  gambarBawah6,
+  gambarBawah7,
+].reverse();
 
 const Documentation = () => {
   return (
