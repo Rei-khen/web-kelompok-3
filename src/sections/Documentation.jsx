@@ -2,18 +2,15 @@
 import { motion } from "framer-motion";
 import DocumentationMarquee from "../components/DocumentationMarquee";
 
-// --- GAMBAR PLACEHOLDER (Ganti dengan foto dokumentasi asli nanti) ---
-// Kita pakai gambar lab yang ada dulu sebagai contoh
+// --- GAMBAR PLACEHOLDER ---
 import docImg1 from "../assets/images/lab-bg-1.png";
-// import docImg2 from "../assets/images/lainnya.png";
 
-// Data dummy (diulang-ulang biar banyak)
 const row1Images = [docImg1, docImg1, docImg1, docImg1, docImg1];
-const row2Images = [docImg1, docImg1, docImg1, docImg1, docImg1].reverse(); // Dibalik biar beda dikit
+const row2Images = [docImg1, docImg1, docImg1, docImg1, docImg1].reverse();
 
 const Documentation = () => {
   return (
-    <section className="min-h-screen w-full bg-[#0a192f] py-20 flex flex-col justify-center items-center overflow-hidden relative">
+    <section className="min-h-screen w-full bg-gradient-to-b from-black to-[#0a192f] py-20 flex flex-col justify-center items-center overflow-hidden relative">
       {/* HEADER SECTION */}
       <div className="text-center mb-16 z-10 px-4">
         <motion.h2
@@ -28,13 +25,13 @@ const Documentation = () => {
           initial={{ opacity: 0, width: 0 }}
           whileInView={{ opacity: 1, width: "100px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="h-1 bg-blue-500 mx-auto mt-4 rounded-full"
+          className="h-1 bg-blue-500 mx-auto mt-4"
         />
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto"
+          className="text-gray-400 mt-6 text-sm md:text-lg max-w-2xl mx-auto"
         >
           Activities, events, and vibrant moments captured within the
           Informatics Engineering department.
@@ -42,20 +39,20 @@ const Documentation = () => {
       </div>
 
       {/* --- MARQUEE ROWS --- */}
-      <div className="flex flex-col gap-6 w-full">
-        {/* ROW 1: LEBIH CEPAT (Duration lebih kecil = lebih cepat) */}
-        {/* reverse={true} agar bergerak dari KIRI ke KANAN */}
+      {/* PERUBAHAN DISINI: gap-4 -> gap-10 (Jarak antara baris atas dan bawah) */}
+      <div className="flex flex-col gap-10 w-full">
+        {/* ROW 1: CEPAT */}
         <DocumentationMarquee
           images={row1Images}
-          duration={25} // Kecepatan tinggi
-          reverse={true}
+          duration={12}
+          reverse={false}
         />
 
-        {/* ROW 2: LEBIH LAMBAT */}
+        {/* ROW 2: LAMBAT */}
         <DocumentationMarquee
           images={row2Images}
-          duration={40} // Kecepatan rendah
-          reverse={true}
+          duration={24}
+          reverse={false}
         />
       </div>
     </section>

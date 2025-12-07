@@ -3,14 +3,7 @@ import { motion } from "framer-motion";
 
 const DocumentationMarquee = ({ images, duration = 20, reverse = false }) => {
   return (
-    <div className="flex overflow-hidden select-none w-full relative gradient-mask-r-0">
-      {/*
-        Gradient Mask (Opsional):
-        Menambahkan efek pudar di kiri kanan agar tidak terpotong kaku.
-        Membutuhkan plugin tailwind-scrollbar-hide atau custom CSS.
-        Jika tidak ingin dipakai, hapus className "gradient-mask-r-0" di atas.
-      */}
-
+    <div className="flex overflow-hidden select-none w-full relative">
       <motion.div
         initial={{ x: reverse ? "-100%" : "0%" }}
         animate={{ x: reverse ? "0%" : "-100%" }}
@@ -19,26 +12,26 @@ const DocumentationMarquee = ({ images, duration = 20, reverse = false }) => {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="flex flex-shrink-0 gap-4 px-2"
+        // PERUBAHAN DISINI: gap-4 -> gap-8 (Memberi jarak lebih lebar antar gambar)
+        className="flex flex-shrink-0 gap-8 px-4"
       >
         {/* RENDER PERTAMA */}
         {images.map((img, i) => (
           <div
             key={i}
-            className="relative w-[300px] h-[200px] md:w-[400px] md:h-[250px] flex-shrink-0 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+            className="relative w-[250px] h-[160px] md:w-[350px] md:h-[220px] flex-shrink-0 overflow-hidden grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer border border-white/10"
           >
             <img
               src={img}
               alt={`documentation-${i}`}
               className="object-cover w-full h-full"
             />
-            {/* Overlay tipis */}
             <div className="absolute inset-0 bg-black/20 hover:bg-transparent transition-all" />
           </div>
         ))}
       </motion.div>
 
-      {/* RENDER KEDUA (DUPLIKAT UNTUK LOOPING) */}
+      {/* RENDER KEDUA (DUPLIKAT) */}
       <motion.div
         initial={{ x: reverse ? "-100%" : "0%" }}
         animate={{ x: reverse ? "0%" : "-100%" }}
@@ -47,12 +40,13 @@ const DocumentationMarquee = ({ images, duration = 20, reverse = false }) => {
           repeat: Infinity,
           ease: "linear",
         }}
-        className="flex flex-shrink-0 gap-4 px-2"
+        // PERUBAHAN DISINI: gap-4 -> gap-8
+        className="flex flex-shrink-0 gap-8 px-4"
       >
         {images.map((img, i) => (
           <div
             key={`dup-${i}`}
-            className="relative w-[300px] h-[200px] md:w-[400px] md:h-[250px] flex-shrink-0 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer"
+            className="relative w-[250px] h-[160px] md:w-[350px] md:h-[220px] flex-shrink-0 overflow-hidden grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer border border-white/10"
           >
             <img
               src={img}
