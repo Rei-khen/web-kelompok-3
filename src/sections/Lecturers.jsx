@@ -23,6 +23,17 @@ import pakKiki from "../assets/images/gambarDosen/pak_kiki.jpeg";
 import pakAdy from "../assets/images/gambarDosen/pak_ady.png";
 import ibuEnab from "../assets/images/gambarDosen/ibu_enab.jpeg";
 import broKris from "../assets/images/gambarDosen/bro_kris.png";
+import ibuElly from "../assets/images/gambarDosen/ibu_elly.png";
+import pak_ais from "../assets/images/gambarDosen/pak_ais.jpg";
+import ibuEmma from "../assets/images/gambarDosen/ibu_emma.png";
+import ibuUyya from "../assets/images/gambarDosen/ibu_uyya.jpg";
+import pakAlif from "../assets/images/gambarDosen/pak_alif.jpg";
+import pakAbdi from "../assets/images/gambarDosen/pak_abdi.jpg";
+import ibuTya from "../assets/images/gambarDosen/ibu_tya.jpeg";
+import ibuAnti from "../assets/images/gambarDosen/ibu_anti.jpg";
+import ibuHerlina from "../assets/images/gambarDosen/ibuHerlina.jpeg";
+import ibuDewiani from "../assets/images/gambarDosen/ibu_dewiani.jpeg";
+import pakIqra from "../assets/images/gambarDosen/pak_iqra.png";
 
 const lecturersData = [
   {
@@ -100,7 +111,7 @@ const lecturersData = [
     name: "Dr.Eng.Ir. Dewiani",
     title: "M.T.",
     role: "Associate Professor",
-    image: lecturerImg,
+    image: ibuDewiani,
   },
   {
     id: 12,
@@ -132,73 +143,73 @@ const lecturersData = [
   },
   {
     id: 16,
-    name: "Nama Dosen 16",
-    title: "Gelar Dosen 16",
-    role: "Jabatan 16",
-    image: lecturerImg,
+    name: "Elly Warni",
+    title: "S.T., M.T.",
+    role: "Assistant Professor",
+    image: ibuElly,
   },
   {
     id: 17,
-    name: "Nama Dosen 17",
-    title: "Gelar Dosen 17",
-    role: "Jabatan 17",
-    image: lecturerImg,
+    name: "A. Ais Prayogi Alimuddin",
+    title: "S.T., M.Eng.",
+    role: "Assistant Professor",
+    image: pak_ais,
   },
   {
     id: 18,
-    name: "Nama Dosen 18",
-    title: "Gelar Dosen 18",
-    role: "Jabatan 18",
-    image: lecturerImg,
+    name: "Mukarramah Yusuf",
+    title: "B.Sc.,M.Sc. Ph. D",
+    role: "Assistant Professor",
+    image: ibuEmma,
   },
   {
     id: 19,
-    name: "Nama Dosen 19",
-    title: "Gelar Dosen 19",
-    role: "Jabatan 19",
-    image: lecturerImg,
+    name: "Ir. Anugrayani Bustamin",
+    title: "S.T., M.T.",
+    role: "	Assistant Professor",
+    image: ibuUyya,
   },
   {
     id: 20,
-    name: "Nama Dosen 20",
-    title: "Gelar Dosen 20",
-    role: "Jabatan 20",
-    image: lecturerImg,
+    name: "Ir. Muhammad Alief Fahdal Imran Oemar",
+    title: "ST., M.Sc",
+    role: "Assistant Professor",
+    image: pakAlif,
   },
   {
     id: 21,
-    name: "Nama Dosen 21",
-    title: "Gelar Dosen 21",
-    role: "Jabatan 21",
-    image: lecturerImg,
+    name: "Dr. Muhammad Abdillah Rahmat",
+    title: "S.T., M.T",
+    role: "Assistant Professor",
+    image: pakAbdi,
   },
   {
     id: 22,
-    name: "Nama Dosen 22",
-    title: "Gelar Dosen 22",
-    role: "Jabatan 22",
-    image: lecturerImg,
+    name: "Ir. Tyanita Puti Marindah W",
+    title: "S.T., M.Inf.",
+    role: "Assistant Professor",
+    image: ibuTya,
   },
   {
     id: 23,
-    name: "Nama Dosen 23",
-    title: "Gelar Dosen 23",
-    role: "Jabatan 23",
-    image: lecturerImg,
+    name: "Arliyanti Nurdin",
+    title: "S.T.,M.T",
+    role: "Assistant Professor",
+    image: ibuAnti,
   },
   {
     id: 24,
-    name: "Nama Dosen 24",
-    title: "Gelar Dosen 24",
-    role: "Jabatan 24",
-    image: lecturerImg,
+    name: "Herlina Anwar",
+    title: "S.T., M.Kom",
+    role: "Assistant Professor",
+    image: ibuHerlina,
   },
   {
     id: 25,
-    name: "Nama Dosen 25",
-    title: "Gelar Dosen 25",
-    role: "Jabatan 25",
-    image: lecturerImg,
+    name: "Iqra Aswad",
+    title: "S.T., M.T.",
+    role: "Assistant Professor",
+    image: pakIqra,
   },
 ];
 
