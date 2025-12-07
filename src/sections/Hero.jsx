@@ -21,7 +21,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden font-sans bg-[#0a192f]">
+    <section
+      id="home"
+      className="relative h-screen w-full overflow-hidden font-sans bg-[#0a192f]"
+    >
       {/* LAYER 1: LANGIT */}
       <motion.div
         initial={{ scale: 1.8 }}
@@ -79,9 +82,6 @@ const Hero = () => {
         </motion.h1>
       </div>
 
-      {/* ========================================================= */}
-      {/* PENAMBAHAN BARU: GRADIENT MASK (FOG) DI BAWAH             */}
-      {/* ========================================================= */}
       {/* 1. h-64: Tinggi gradasi cukup besar biar smooth
           2. from-[#0a192f]: Warna bawah sama dengan background Labs (Menyatu)
           3. to-transparent: Warna atas transparan (biar gedung atas kelihatan)

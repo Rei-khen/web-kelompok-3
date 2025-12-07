@@ -14,7 +14,10 @@ const row2Images = [docImg1, docImg1, docImg1, docImg1, docImg1].reverse();
 
 const Documentation = () => {
   return (
-    <section className="min-h-screen w-full bg-gradient-to-b from-black to-[#0a192f] py-20 flex flex-col justify-center items-center overflow-hidden relative">
+    <section
+      id="documentation"
+      className="min-h-screen w-full bg-gradient-to-b from-black to-[#0a192f] py-20 flex flex-col justify-center items-center overflow-hidden relative"
+    >
       {/* HEADER SECTION */}
       <div className="text-center mb-16 z-10 px-4">
         <motion.h2

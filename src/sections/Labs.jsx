@@ -65,7 +65,10 @@ const Labs = () => {
   const isInView = useInView(containerRef, { amount: 0.3 });
 
   return (
-    <section className="min-h-screen w-full bg-gradient-to-b from-[#0a192f] to-black flex items-center justify-center px-4 md:px-10 pt-20 overflow-hidden">
+    <section
+      id="labs"
+      className="min-h-screen w-full bg-gradient-to-b from-[#0a192f] to-black flex items-center justify-center px-4 md:px-10 pt-20 overflow-hidden"
+    >
       <div
         ref={containerRef}
         className="w-full h-[60vh] md:h-[80vh] flex flex-row gap-4 max-w-7xl"
@@ -120,10 +123,6 @@ const Labs = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                // PERUBAHAN DISINI:
-                // justify-center -> justify-end (Rata Kanan)
-                // pb-8 -> pb-8 (Tetap jarak bawah)
-                // pr-6 (TAMBAHAN) -> Jarak dari kanan
                 className="absolute inset-0 flex items-end justify-end pb-8 pr-6"
               >
                 <img

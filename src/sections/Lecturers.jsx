@@ -245,7 +245,11 @@ const Lecturers = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative h-[500vh] bg-black">
+    <section
+      id="lecturers"
+      ref={sectionRef}
+      className="relative h-[500vh] bg-black"
+    >
       {/* STICKY VIEWPORT + PERSPECTIVE 3D */}
       <div className="sticky top-0 h-screen w-full bg-gradient-to-b from-black to-[#0a192f] flex flex-col justify-center items-center overflow-hidden perspective-[2000px]">
         {/* --- 1. LAYER PARTIKEL (BACKGROUND) --- */}

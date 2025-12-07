@@ -89,7 +89,10 @@ const Academics = () => {
 
   return (
     // Tambahkan perspective-[2000px] agar efek 3D terlihat
-    <section className="min-h-screen w-full bg-gradient-to-b from-[#0a192f] via-[#050d1a] to-black py-32 px-4 md:px-10 flex flex-col items-center justify-center overflow-hidden perspective-[2000px]">
+    <section
+      id="academics"
+      className="min-h-screen w-full bg-gradient-to-b from-[#0a192f] via-[#050d1a] to-black py-32 px-4 md:px-10 flex flex-col items-center justify-center overflow-hidden perspective-[2000px]"
+    >
       {/* HEADER SECTION */}
       <div className="text-center mb-20 max-w-4xl z-10">
         <motion.h2
