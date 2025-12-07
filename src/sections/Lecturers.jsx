@@ -8,13 +8,199 @@ import Particles from "../components/Particles"; // Sesuaikan path jika beda fol
 // --- GAMBAR PLACEHOLDER ---
 import lecturerImg from "../assets/images/lab-bg-1.png";
 
-const lecturersData = Array.from({ length: 25 }).map((_, i) => ({
-  id: i + 1,
-  name: `Dosen ${i + 1}`,
-  title: ["M.Kom", "S.T., M.T.", "Ph.D", "Dr. Eng"][i % 4],
-  role: ["Head of Lab", "Lecturer", "Researcher", "Dean"][i % 4],
-  image: lecturerImg,
-}));
+//list gambar dosen
+import profBayuImg from "../assets/images/gambarDosen/prof_bayu.jpg";
+import profAndaniImg from "../assets/images/gambarDosen/prof_andani.jpg";
+import profSyarifuddinSyarif from "../assets/images/gambarDosen/prof_syafaruddin_syarif.jpg";
+import profAnsarSuyuti from "../assets/images/gambarDosen/prof_Ansar_suyuti.png";
+import profSyarifuddin from "../assets/images/gambarDosen/prof_syafruddin.jpg";
+import profNiswar from "../assets/images/gambarDosen/prof_niswar.png";
+import profAmilAhmadIlham from "../assets/images/gambarDosen/prof_amil.jpeg";
+import profAdnan from "../assets/images/gambarDosen/prof_adnan.jpg";
+import ibuInggrid from "../assets/images/gambarDosen/ibu_inggrid.jpg";
+import pakZahir from "../assets/images/gambarDosen/pas_zahir.png";
+import pakKiki from "../assets/images/gambarDosen/pak_kiki.jpeg";
+import pakAdy from "../assets/images/gambarDosen/pak_ady.png";
+import ibuEnab from "../assets/images/gambarDosen/ibu_enab.jpeg";
+import broKris from "../assets/images/gambarDosen/bro_kris.png";
+
+const lecturersData = [
+  {
+    id: 1,
+    name: "Prof. Dr. Ir. Indrabayu",
+    title: "ST., MT., M.Bus.Sys., IPM, ASEAN. Eng.",
+    role: "Professor",
+    image: profBayuImg,
+  },
+  {
+    id: 2,
+    name: "Prof. Dr. Ir. Andani",
+    title: "M.T., IPU., ASEAN.Eng.",
+    role: "Professor",
+    image: profAndaniImg,
+  },
+  {
+    id: 3,
+    name: "Prof. Dr. Ir. Syafruddin Syarif",
+    title: "M.T.",
+    role: "Professor",
+    image: profSyarifuddinSyarif,
+  },
+  {
+    id: 4,
+    name: "Prof.Dr.Ir. Ansar Suyuti",
+    title: "M.T.",
+    role: "Professor",
+    image: profAnsarSuyuti,
+  },
+  {
+    id: 5,
+    name: "Prof. Dr. Eng. Ir. Syafaruddin",
+    title: "S.T, M.Eng., IPU",
+    role: "Professor",
+    image: profSyarifuddin,
+  },
+  {
+    id: 6,
+    name: "Prof. Dr. Eng. Muhammad Niswar",
+    title: "S.T., M.IT.",
+    role: "	Professor",
+    image: profNiswar,
+  },
+  {
+    id: 7,
+    name: "Prof. Dr. Amil Ahmad Ilham",
+    title: "S.T., M.IT.",
+    role: "Professor",
+    image: profAmilAhmadIlham,
+  },
+  {
+    id: 8,
+    name: "Prof. Dr. Adnan",
+    title: "S.T., M.T.",
+    role: "Professor",
+    image: profAdnan,
+  },
+  {
+    id: 9,
+    name: "Dr. Ir. Ingrid Nurtanio",
+    title: "M.T.",
+    role: "Associate Professor",
+    image: ibuInggrid,
+  },
+  {
+    id: 10,
+    name: "Dr. Ir. Zahir Zainuddin",
+    title: "M.Sc.",
+    role: "Associate Professor",
+    image: pakZahir,
+  },
+  {
+    id: 11,
+    name: "Dr.Eng.Ir. Dewiani",
+    title: "M.T.",
+    role: "Associate Professor",
+    image: lecturerImg,
+  },
+  {
+    id: 12,
+    name: "Dr. Eng. Ir. Zulkifli Tahir,",
+    title: "S.T., M.Sc.",
+    role: "Assistant Professor",
+    image: pakKiki,
+  },
+  {
+    id: 13,
+    name: "Dr. Eng. Ady Wahyudi Paundu",
+    title: "S.T., M.T.",
+    role: "Assistant Professor",
+    image: pakAdy,
+  },
+  {
+    id: 14,
+    name: "Dr. Ir. Zaenab Muslimin",
+    title: "M.T",
+    role: "Associate Professor",
+    image: ibuEnab,
+  },
+  {
+    id: 15,
+    name: "Ir. Christoforus Yohannes",
+    title: "M.T",
+    role: "Assistant Professor",
+    image: broKris,
+  },
+  {
+    id: 16,
+    name: "Nama Dosen 16",
+    title: "Gelar Dosen 16",
+    role: "Jabatan 16",
+    image: lecturerImg,
+  },
+  {
+    id: 17,
+    name: "Nama Dosen 17",
+    title: "Gelar Dosen 17",
+    role: "Jabatan 17",
+    image: lecturerImg,
+  },
+  {
+    id: 18,
+    name: "Nama Dosen 18",
+    title: "Gelar Dosen 18",
+    role: "Jabatan 18",
+    image: lecturerImg,
+  },
+  {
+    id: 19,
+    name: "Nama Dosen 19",
+    title: "Gelar Dosen 19",
+    role: "Jabatan 19",
+    image: lecturerImg,
+  },
+  {
+    id: 20,
+    name: "Nama Dosen 20",
+    title: "Gelar Dosen 20",
+    role: "Jabatan 20",
+    image: lecturerImg,
+  },
+  {
+    id: 21,
+    name: "Nama Dosen 21",
+    title: "Gelar Dosen 21",
+    role: "Jabatan 21",
+    image: lecturerImg,
+  },
+  {
+    id: 22,
+    name: "Nama Dosen 22",
+    title: "Gelar Dosen 22",
+    role: "Jabatan 22",
+    image: lecturerImg,
+  },
+  {
+    id: 23,
+    name: "Nama Dosen 23",
+    title: "Gelar Dosen 23",
+    role: "Jabatan 23",
+    image: lecturerImg,
+  },
+  {
+    id: 24,
+    name: "Nama Dosen 24",
+    title: "Gelar Dosen 24",
+    role: "Jabatan 24",
+    image: lecturerImg,
+  },
+  {
+    id: 25,
+    name: "Nama Dosen 25",
+    title: "Gelar Dosen 25",
+    role: "Jabatan 25",
+    image: lecturerImg,
+  },
+];
 
 const Lecturers = () => {
   const [activeId, setActiveId] = useState(1);
