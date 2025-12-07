@@ -5,6 +5,7 @@ import Labs from "./sections/Labs";
 import Lecturers from "./sections/Lecturers";
 import Academics from "./sections/Academics";
 import Documentation from "./sections/Documentation";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Lecturers />
       <Academics />
       <Documentation />
+      <Footer />
     </main>
   );
 }
